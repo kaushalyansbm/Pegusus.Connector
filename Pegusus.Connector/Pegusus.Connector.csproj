@@ -18,6 +18,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pegusus.Data\Pegusus.Data.csproj" />
+    <ProjectReference Include="..\Pegusus.Services\Pegusus.Services.csproj" />
   </ItemGroup>
 
 

@@ -1,8 +1,8 @@
 ﻿namespace Pegusus.Connector.Controllers
 {
+    using Logger;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging;
-    using Pegusus.Connector.Logger;
+    using Services.ViewModels;
     using System.Threading.Tasks;
 
     [ApiController]
@@ -15,16 +15,14 @@
         {
             _iloggerManager = iloggerManager;
         }
- 
+
         [HttpGet]
         [Route("CustomerLoging")]
-        public async Task<IActionResult> CustomerLoging()
+        public async Task<IActionResult> CustomerLoging(UserViewModels userViewModel)
         {
             _iloggerManager.LogInfo("start to loging to Customer");
             return Ok();
+        }
 
-
-        } 
- 
     }
 }

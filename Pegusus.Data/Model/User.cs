@@ -8,6 +8,7 @@
         public string ContactNumber { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Password { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<Answer> Answers { get; set; }
