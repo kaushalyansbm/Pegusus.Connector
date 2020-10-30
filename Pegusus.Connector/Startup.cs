@@ -13,7 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Pegusus.Data.Model.DBContext;
+    using Pegusus.Connector.Logger;
+    using Pegusus.Data.Model.DBContext;
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -26,6 +27,7 @@ using Pegusus.Data.Model.DBContext;
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ILoggerManager,LoggerManager>();
             services.AddControllers();
 
             services.AddDbContext<PegususContext>(item => item.UseSqlServer("server = (LocalDB)\\MSSQLLocalDB; database = PGConnectorDB; Trusted_Connection = True"));

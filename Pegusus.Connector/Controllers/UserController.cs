@@ -1,16 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Pegusus.Connector.Controllers
+﻿namespace Pegusus.Connector.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using Pegusus.Connector.Logger;
+    using System.Threading.Tasks;
+
+    [ApiController]
+    [Route("Api/[controller]")]
     public class UserController : Controller
     {
-        public IActionResult Index()
+        private readonly ILoggerManager _iloggerManager;
+
+        public UserController(ILoggerManager iloggerManager)
         {
-            return View();
+            _iloggerManager = iloggerManager;
         }
+ 
+        [HttpGet]
+        [Route("CustomerLoging")]
+        public async Task<IActionResult> CustomerLoging()
+        {
+            _iloggerManager.LogInfo("start to loging to Customer");
+            return Ok();
+
+
+        } 
+ 
     }
 }
