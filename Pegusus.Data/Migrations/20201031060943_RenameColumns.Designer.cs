@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pegusus.Data.Model.DBContext;
 
 namespace Pegusus.Data.Migrations
 {
     [DbContext(typeof(PegususContext))]
-    partial class PegususContextModelSnapshot : ModelSnapshot
+    [Migration("20201031060943_RenameColumns")]
+    partial class RenameColumns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

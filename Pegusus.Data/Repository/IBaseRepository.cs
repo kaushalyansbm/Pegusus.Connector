@@ -1,12 +1,13 @@
-﻿using NLog.Filters;
-using Pegusus.Data.Model;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Pegusus.Data.Repository
+﻿namespace Pegusus.Data.Repository
 {
+    using Data.Model;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     public interface IBaseRepository<T> where T: class,IBaseEntity
     {
-        Task<List<T>> getAll();
+        Task<List<T>> getAllAsync();
+        IQueryable<T> getAll();
     }
 }

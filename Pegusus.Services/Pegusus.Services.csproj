@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructures\" />
-    <Folder Include="Interfaces\" />
+    <ProjectReference Include="..\Pegusus.Data\Pegusus.Data.csproj" />
   </ItemGroup>
 
 </Project>

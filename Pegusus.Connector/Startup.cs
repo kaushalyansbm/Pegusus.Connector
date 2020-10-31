@@ -14,7 +14,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
     using Pegusus.Connector.Logger;
+    using Pegusus.Data.Model;
     using Pegusus.Data.Model.DBContext;
+    using Pegusus.Data.Repository;
+    using Pegusus.Services.Infrastructures;
+    using Pegusus.Services.Interfaces;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -28,6 +33,9 @@ using Microsoft.Extensions.Logging;
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ILoggerManager,LoggerManager>();
+            services.AddScoped<IUserService, UserService>();            
+            services.AddScoped<IBaseRepository<User>, BaseRepository<User>>((provider) =>
+           new BaseRepository<User>(provider.GetService<PegususContext>().Set<User>()));
             services.AddControllers();
 
             services.AddDbContext<PegususContext>(item => item.UseSqlServer("server = (LocalDB)\\MSSQLLocalDB; database = PGConnectorDB; Trusted_Connection = True"));
