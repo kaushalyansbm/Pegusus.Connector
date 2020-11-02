@@ -4,7 +4,8 @@ namespace Pegusus.Connector
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+    using AutoMapper;
+    using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -28,8 +29,8 @@ using Microsoft.Extensions.Logging;
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ILoggerManager,LoggerManager>();
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
-
             services.AddDbContext<PegususContext>(item => item.UseSqlServer("server = (LocalDB)\\MSSQLLocalDB; database = PGConnectorDB; Trusted_Connection = True"));
         }
 
